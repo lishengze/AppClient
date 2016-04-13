@@ -1,0 +1,107 @@
+# 'menu': [
+#   {
+#     label: '&File'
+#     submenu: [
+#       { label: 'New &Window', command: 'application:new-window' }
+#       { label: 'Reopen Last &Item', command: 'pane:reopen-closed-item' }
+#       { type: 'separator' }
+#       { label: 'Se&ttings', command: 'application:show-settings' }
+#       { type: 'separator' }
+#       { label: '&Close Tab', command: 'core:close' }
+#       { label: 'Clos&e Window', command: 'window:close' }
+#       { type: 'separator' }
+#       { label: 'E&xit', command: 'application:quit' }
+#     ]
+#   }
+#
+#   {
+#     label: '&View'
+#     submenu: [
+#       { label: '&Reload', command: 'window:reload' }
+#       { label: 'Toggle &Full Screen', command: 'window:toggle-full-screen' }
+#       { label: 'Toggle Menu Bar', command: 'window:toggle-menu-bar' }
+#       {
+#         label: 'Developer'
+#         submenu: [
+#           { label: 'Open In &Dev Mode…', command: 'application:open-dev' }
+#           { label: 'Run Package &Specs', command: 'window:run-package-specs' }
+#           { label: 'Toggle Developer &Tools', command: 'window:toggle-dev-tools' }
+#         ]
+#       }
+#     ]
+#   }
+#
+#   {
+#     label: '&Packages'
+#     submenu: []
+#   }
+#
+#   {
+#     label: '&Help'
+#     submenu: [
+#       { label: 'VERSION', enabled: false }
+#       { label: 'Restart and Install Update', command: 'application:install-update', visible: false}
+#       { label: 'Check for Update', command: 'application:check-for-update', visible: false}
+#       { label: 'Checking for Update', enabled: false, visible: false}
+#       { label: 'Downloading Update', enabled: false, visible: false}
+#       { type: 'separator' }
+#       { label: 'About Atom', command: 'application:about' }
+#       { type: 'separator' }
+#     ]
+#   }
+# ]
+
+'menu': [
+  {
+    label: '&文件'
+    submenu: [
+      { label: '新窗口', command: 'application:new-window' }
+      { label: '重新打开关闭的标签页', command: 'pane:reopen-closed-item' }
+      { type: 'separator' }
+      { label: '设置', command: 'application:show-settings' }
+      { type: 'separator' }
+      { label: '关闭当前标签页', command: 'core:close' }
+      { label: '关闭窗口', command: 'window:close' }
+      { type: 'separator' }
+      { label: '退出', command: 'application:quit' }
+    ]
+  }
+
+  {
+    label: '视图'
+    submenu: [
+      { label: '重新加载', command: 'window:reload' }
+      { label: '切换全屏', command: 'window:toggle-full-screen' }
+      { label: '显示/隐藏菜单栏', command: 'window:toggle-menu-bar' }
+      {
+        label: '开发者'
+        submenu: [
+          { label: 'Dev模式打开', command: 'application:open-dev' }
+          { label: '运行package测试用例', command: 'window:run-package-specs' }
+          { label: '切换开发者工具', command: 'window:toggle-dev-tools' }
+        ]
+      }
+    ]
+  }
+
+  {
+    label: '组件'
+    submenu: []
+  }
+
+  {
+    label: '帮助'
+    submenu: [
+      { label: 'VERSION', enabled: false }
+      { label: 'Restart and Install Update', command: 'application:install-update', visible: false}
+      { label: 'Check for Update', command: 'application:check-for-update', visible: false}
+      { label: 'Checking for Update', enabled: false, visible: false}
+      { label: 'Downloading Update', enabled: false, visible: false}
+      { type: 'separator' }
+      { label: '关于', command: 'application:about' }
+      { type: 'separator' }
+    ]
+  }
+]
+
+'context-menu':{}

@@ -1,0 +1,68 @@
+'body':
+  # Platform Bindings
+  'ctrl-pageup': 'pane:show-previous-item'
+  'ctrl-pagedown': 'pane:show-next-item'
+
+  # Atom Specific
+  'enter': 'core:confirm'
+  'escape': 'core:cancel'
+  'up': 'core:move-up'
+  'down': 'core:move-down'
+  'ctrl-up': 'core:move-up'
+  'ctrl-down': 'core:move-down'
+  'left': 'core:move-left'
+  'right': 'core:move-right'
+  'ctrl-alt-r': 'window:reload'
+  'ctrl-alt-i': 'window:toggle-dev-tools'
+  'ctrl-alt-p': 'window:run-package-specs'
+  'ctrl-shift-left': 'pane:move-item-left'
+  'ctrl-shift-right': 'pane:move-item-right'
+  'F11': 'window:toggle-full-screen'
+
+  # Sublime Parity
+  'ctrl-,': 'application:show-settings'
+  'ctrl-N': 'application:new-window'
+  'ctrl-W': 'window:close'
+  'ctrl-T': 'pane:reopen-closed-item'
+  'ctrl-f4': 'core:close'
+  'ctrl-w': 'core:close'
+  'shift-delete': 'core:cut'
+  'ctrl-insert': 'core:copy'
+  'shift-insert': 'core:paste'
+  'ctrl-x': 'core:cut'
+  'ctrl-c': 'core:copy'
+  'ctrl-v': 'core:paste'
+  'pageup': 'core:page-up'
+  'pagedown': 'core:page-down'
+  'backspace': 'core:backspace'
+  'shift-backspace': 'core:backspace'
+  'ctrl-tab': 'pane:show-next-item'
+  'ctrl-shift-tab': 'pane:show-previous-item'
+  'ctrl-pageup': 'pane:show-previous-item'
+  'ctrl-pagedown': 'pane:show-next-item'
+  'ctrl-shift-up': 'core:move-up'
+  'ctrl-shift-down': 'core:move-down'
+
+  'ctrl-k ctrl-w': 'pane:close' # Atom Specific
+  'ctrl-k alt-ctrl-w': 'pane:close-other-items' # Atom Specific
+  'alt-1': 'pane:show-item-1'
+  'alt-2': 'pane:show-item-2'
+  'alt-3': 'pane:show-item-3'
+  'alt-4': 'pane:show-item-4'
+  'alt-5': 'pane:show-item-5'
+  'alt-6': 'pane:show-item-6'
+  'alt-7': 'pane:show-item-7'
+  'alt-8': 'pane:show-item-8'
+  'alt-9': 'pane:show-item-9'
+
+'atom-workspace atom-pane':
+  'ctrl-alt-=': 'pane:increase-size'
+  'ctrl-alt--': 'pane:decrease-size'
+
+# allow standard input fields to work correctly
+'body .native-key-bindings':
+  'ctrl-z': 'native!'
+  'ctrl-Z': 'native!'
+  'ctrl-x': 'native!'
+  'ctrl-c': 'native!'
+  'ctrl-v': 'native!'
