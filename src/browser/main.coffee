@@ -1,11 +1,12 @@
-global.shellStartTime = Date.now()
+global.shellStartTime = Date.now() # 性能检测,启动花的时间;
 
 process.on 'uncaughtException', (error={}) ->
   console.log(error.message) if error.message?
   console.log(error.stack) if error.stack?
 
-crashReporter = require 'crash-reporter'
-app = require 'app'
+
+crashReporter = require 'crash-reporter'  # electron 的模块, 用于向服务器发送信息， api 在electron:
+app = require 'app'                       # electron;
 fs = require 'fs-plus'
 path = require 'path'
 yargs = require 'yargs'
@@ -15,7 +16,7 @@ start = ->
   args = parseCommandLine()
   setupAtomHome(args)
   setupCompileCache()
-  return if handleStartupEventWithSquirrel()
+  return if handleStartupEventWithSquirrel() # 负责自动更新;
 
   # NB: This prevents Win10 from showing dupe items in the taskbar
   app.setAppUserModelId('com.squirrel.monitor.monitor')
@@ -23,10 +24,10 @@ start = ->
   app.on 'will-finish-launching', setupCrashReporter
 
   app.on 'ready', ->
-    AtomApplication = require path.join(args.resourcePath, 'src', 'browser', 'atom-application')
-    AtomApplication.open(args)
+    AtomApplication = require path.join(args.resourcePath, 'src', 'browser', 'atom-application')  # 管理所有的功能;
+    AtomApplication.open(args) # atom-application 根据参数执行操作;
     console.log 'Test-0.1.2'
-    console.log("App load time: #{Date.now() - global.shellStartTime}ms") unless args.test
+    console.log("App load time: #{Date.now() - global.shellStartTime}ms") unless args.test  #显示启动时间;
 
 normalizeDriveLetterName = (filePath) ->
   if process.platform is 'win32'
@@ -36,19 +37,20 @@ normalizeDriveLetterName = (filePath) ->
 
 handleStartupEventWithSquirrel = ->
   return false unless process.platform is 'win32'
-  SquirrelUpdate = require './squirrel-update'
+  SquirrelUpdate = require './squirrel-update' # 负责自动更新;
   squirrelCommand = process.argv[1]
   SquirrelUpdate.handleStartupEvent(app, squirrelCommand)
 
 setupCrashReporter = ->
-  crashReporter.start(productName: '慧眼监控', companyName: 'SFIT', submitUrl: 'tbd')
+  crashReporter.start(productName: '慧眼监控', companyName: 'SFIT', submitUrl: 'tbd') # 启动监听crash的服务;
 
 setupAtomHome = ({setPortable}) ->
   return if process.env.ATOM_HOME
 
-  #=> 改变用户数据目录
+  #=> 改变用户数据目录, 创建用户的monitor
   atomHome = path.join(app.getHomeDir(), '.monitor')
   AtomPortable = require './atom-portable'
+
 
   if setPortable and not AtomPortable.isPortableInstall(process.platform, process.env.ATOM_HOME, atomHome)
     try
@@ -63,12 +65,15 @@ setupAtomHome = ({setPortable}) ->
   try
     atomHome = fs.realpathSync(atomHome)
 
+# 进程的用户目录;
   process.env.ATOM_HOME = atomHome
 
+# 编译时产生的缓存， 将 coffee编译成 js 的缓存;
 setupCompileCache = ->
   compileCache = require('../compile-cache')
   compileCache.setAtomHomeDirectory(process.env.ATOM_HOME)
 
+#解析命令行like: atom --version;
 parseCommandLine = ->
   version = app.getVersion()
   options = yargs(process.argv[1..]).wrap(100)

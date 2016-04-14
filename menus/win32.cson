@@ -51,11 +51,12 @@
 #   }
 # ]
 
-'menu': [
+# package 也可以控制menu;
+'menu': [ #上面的一行;
   {
     label: '&文件'
     submenu: [
-      { label: '新窗口', command: 'application:new-window' }
+      { label: '新窗口', command: 'application:new-window' }  # 命令与
       { label: '重新打开关闭的标签页', command: 'pane:reopen-closed-item' }
       { type: 'separator' }
       { label: '设置', command: 'application:show-settings' }

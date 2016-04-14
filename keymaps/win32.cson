@@ -1,6 +1,6 @@
 'body':
   # Platform Bindings
-  'ctrl-pageup': 'pane:show-previous-item'
+  'ctrl-pageup': 'pane:show-previous-item' #字符串就是一个命令, part:command, 命令怎么写？
   'ctrl-pagedown': 'pane:show-next-item'
 
   # Atom Specific
@@ -56,7 +56,7 @@
   'alt-9': 'pane:show-item-9'
 
 'atom-workspace atom-pane':
-  'ctrl-alt-=': 'pane:increase-size'
+  'ctrl-alt-=': 'pane:increase-size' #面板和命令
   'ctrl-alt--': 'pane:decrease-size'
 
 # allow standard input fields to work correctly
