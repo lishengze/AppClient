@@ -622,7 +622,7 @@ class AtomEnvironment extends Model
 
     @registerDefaultTargetForKeymaps()
 
-    @packages.loadPackages()
+    @packages.loadPackages() # 在constructor 里定义了packages manager.
     @loadStateSync()
     @document.body.appendChild(@views.getView(@workspace))
 
@@ -630,7 +630,7 @@ class AtomEnvironment extends Model
 
     @packages.activate()
     @keymaps.loadUserKeymap()
-    @requireUserInitScript() unless @getLoadSettings().safeMode
+    @requireUserInitScript() unless @getLoadSettings().safeMode #加载用户自定义的脚本;
 
     @menu.update()
 

@@ -83,9 +83,9 @@
     setupVmCompatibility()
     setupCsonCache(CompileCache.getCacheDirectory())
 
-    var initialize = require(loadSettings.windowInitializationScript)
+    var initialize = require(loadSettings.windowInitializationScript) // ../src/initialize-applicaiton-window.coffee.
     initialize({blobStore: blobStore})
-    require('ipc').sendChannel('window-command', 'window:loaded')
+    require('ipc').sendChannel('window-command', 'window:loaded')  // 向主进程发送消息，通知窗口加载完成;
   }
 
   function setupCsonCache (cacheDir) {
@@ -184,7 +184,7 @@
     }
   }
 
-  parseLoadSettings()
+  parseLoadSettings()  // 通过这个函数来得到loadSettings!并在windows.onload 里使用;
   setupAtomHome()
   setupWindowBackground()
 })()

@@ -14,17 +14,17 @@ module.exports = ({blobStore}) ->
   # Make React faster
   process.env.NODE_ENV ?= 'production' unless devMode
 
-  AtomEnvironment = require './atom-environment'
+  AtomEnvironment = require './atom-environment'  # 初始化环境; 对外提供接口， 非常重要.https://atom.io/docs/api/v1.7.1/AtomEnvironment
   ApplicationDelegate = require './application-delegate'
   window.atom = new AtomEnvironment({
     window, document, blobStore,
-    applicationDelegate: new ApplicationDelegate,
+    applicationDelegate: new ApplicationDelegate,  # 应用代表， 渲染进程向主进程发送消息;
     configDirPath: process.env.ATOM_HOME
     enablePersistence: true
   })
 
-  atom.displayWindow()
-  atom.startEditorWindow()
+  atom.displayWindow()  # window 全局对象;
+  atom.startEditorWindow() #启动的过程;
 
   # Workaround for focus getting cleared upon window creation
   windowFocused = ->

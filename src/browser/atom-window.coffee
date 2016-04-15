@@ -38,11 +38,11 @@ class AtomWindow
       options.icon = @constructor.iconPath
 
     @browserWindow = new BrowserWindow options
-    global.atomApplication.addWindow(this)
+    global.atomApplication.addWindow(this)  #
 
     @handleEvents()
 
-    loadSettings = _.extend({}, settings)
+    loadSettings = _.extend({}, settings)  #设置属性, 45-65;
     loadSettings.windowState ?= '{}'
     loadSettings.appVersion = app.getVersion()
     loadSettings.resourcePath = @resourcePath
@@ -66,7 +66,7 @@ class AtomWindow
 
     @browserWindow.loadSettings = loadSettings
     @browserWindow.once 'window:loaded', =>
-      @emit 'window:loaded'
+      @emit 'window:loaded'    #
       @loaded = true
 
     @setLoadSettings(loadSettings)
@@ -74,14 +74,14 @@ class AtomWindow
 
     hasPathToOpen = not (locationsToOpen.length is 1 and not locationsToOpen[0].pathToOpen?)
     @openLocations(locationsToOpen) if hasPathToOpen and not @isSpecWindow()
-
+  # important!
   setLoadSettings: (loadSettingsObj) ->
     # Ignore the windowState when passing loadSettings via URL, since it could
     # be quite large.
     loadSettings = _.clone(loadSettingsObj)
     delete loadSettings['windowState']
 
-    @browserWindow.loadUrl url.format
+    @browserWindow.loadUrl url.format  # 加载url;https://nodejs.org/docs/latest-v0.12.x/api/url.html;
       protocol: 'file'
       pathname: "#{@resourcePath}/static/index.html"
       slashes: true
