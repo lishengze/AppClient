@@ -5,9 +5,9 @@
 // Atom's compile-cache when installing or updating packages, using an older
 // version of node.js
 
-var path = require('path')
-var fs = require('fs-plus')
-var CSON = null
+var path = require('path');
+var fs = require('fs-plus');
+var CSON = null;
 
 var COMPILERS = {
   '.js': require('./babel'),

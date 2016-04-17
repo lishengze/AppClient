@@ -36,8 +36,8 @@ normalizeDriveLetterName = (filePath) ->
     filePath
 
 handleStartupEventWithSquirrel = ->
-  return false unless process.platform is 'win32'
-  SquirrelUpdate = require './squirrel-update' # 负责自动更新;
+  return false unless process.platform is 'win32' # 目前的自动更新只支持win32;
+  SquirrelUpdate = require './squirrel-update'    # 负责自动更新;
   squirrelCommand = process.argv[1]
   SquirrelUpdate.handleStartupEvent(app, squirrelCommand)
 
@@ -49,6 +49,7 @@ setupAtomHome = ({setPortable}) ->
 
   #=> 改变用户数据目录, 创建用户的monitor
   atomHome = path.join(app.getHomeDir(), '.monitor')
+
   AtomPortable = require './atom-portable'
 
 
@@ -65,7 +66,7 @@ setupAtomHome = ({setPortable}) ->
   try
     atomHome = fs.realpathSync(atomHome)
 
-# 进程的用户目录;
+  # 进程的用户目录;
   process.env.ATOM_HOME = atomHome
 
 # 编译时产生的缓存， 将 coffee编译成 js 的缓存;
@@ -76,7 +77,7 @@ setupCompileCache = ->
 #解析命令行like: atom --version;
 parseCommandLine = ->
   version = app.getVersion()
-  options = yargs(process.argv[1..]).wrap(100)
+  options = yargs(process.argv[1..]).wrap(100) # note1
   #=> 改变命令行的使用帮助
   options.usage """
     慧眼监控 v#{version}

@@ -30,7 +30,7 @@ module.exports =
 class AtomApplication
   _.extend @prototype, EventEmitter.prototype
 
-  # Public: The entry point into the Atom application.  # 已改动;
+  # Public: The entry point into the Atom application.  # 已改动, options 就是 command line  传进来的参数;
   @open: (options) ->
     createAtomApplication = -> new AtomApplication(options) #打开新窗口;
     createAtomApplication()
@@ -54,9 +54,9 @@ class AtomApplication
     @pidsToOpenWindows = {}
     @windows = []
 
-    disableAutoUpdate = require(path.join(@resourcePath, 'package.json'))._disableAutoUpdate ? false
-    @autoUpdateManager = new AutoUpdateManager(@version, options.test, disableAutoUpdate)
-    @applicationMenu = new ApplicationMenu(@version, @autoUpdateManager)
+    disableAutoUpdate    = require(path.join(@resourcePath, 'package.json'))._disableAutoUpdate ? false
+    @autoUpdateManager   = new AutoUpdateManager(@version, options.test, disableAutoUpdate)
+    @applicationMenu     = new ApplicationMenu(@version, @autoUpdateManager)
     @atomProtocolHandler = new AtomProtocolHandler(@resourcePath, @safeMode)
 
     @setupJavaScriptArguments()

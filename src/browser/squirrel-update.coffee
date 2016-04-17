@@ -1,26 +1,26 @@
 ChildProcess = require 'child_process'
-fs = require 'fs-plus'
-path = require 'path'
+fs           = require 'fs-plus'
+path         = require 'path'
 
-appFolder = path.resolve(process.execPath, '..')
+appFolder      = path.resolve(process.execPath, '..')
 rootAtomFolder = path.resolve(appFolder, '..')
-binFolder = path.join(rootAtomFolder, 'bin')
-updateDotExe = path.join(rootAtomFolder, 'Update.exe')
-exeName = path.basename(process.execPath)
+binFolder      = path.join(rootAtomFolder, 'bin')
+updateDotExe   = path.join(rootAtomFolder, 'Update.exe')
+exeName        = path.basename(process.execPath)
 # exeName = '慧眼监控'
 
 if process.env.SystemRoot
   system32Path = path.join(process.env.SystemRoot, 'System32')
-  regPath = path.join(system32Path, 'reg.exe')
-  setxPath = path.join(system32Path, 'setx.exe')
+  regPath      = path.join(system32Path, 'reg.exe')
+  setxPath     = path.join(system32Path, 'setx.exe')
 else
-  regPath = 'reg.exe'
+  regPath  = 'reg.exe'
   setxPath = 'setx.exe'
 
 # Registry keys used for context menu 注册表信息;
-fileKeyPath = 'HKCU\\Software\\Classes\\*\\shell\\Atom'
-directoryKeyPath = 'HKCU\\Software\\Classes\\directory\\shell\\Atom'
-backgroundKeyPath = 'HKCU\\Software\\Classes\\directory\\background\\shell\\Atom'
+fileKeyPath        = 'HKCU\\Software\\Classes\\*\\shell\\Atom'
+directoryKeyPath   = 'HKCU\\Software\\Classes\\directory\\shell\\Atom'
+backgroundKeyPath  = 'HKCU\\Software\\Classes\\directory\\background\\shell\\Atom'
 environmentKeyPath = 'HKCU\\Environment'
 
 # Spawn a command and invoke the callback when it completes with an error
