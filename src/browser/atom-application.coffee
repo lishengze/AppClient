@@ -60,7 +60,7 @@ class AtomApplication
     @atomProtocolHandler = new AtomProtocolHandler(@resourcePath, @safeMode)
 
     @setupJavaScriptArguments()
-    @handleEvents() # Registers basic application commands, non-idempotent.
+    @handleEvents()   # Registers basic application commands, non-idempotent.
     @setupDockMenu()  # mac;
     @storageFolder = new StorageFolder(process.env.ATOM_HOME) #更改过的用户目录;
 
