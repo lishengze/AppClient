@@ -64,7 +64,7 @@ class AutoUpdateManager
   emitUpdateAvailableEvent: (windows...) ->
     return unless @releaseVersion?
     for atomWindow in windows
-      atomWindow.sendMessage('update-available', {@releaseVersion})
+      atomWindow.sendMessage('update-available', {@releaseVersion}) # 消息的响应？
     return
 
   setState: (state) ->
