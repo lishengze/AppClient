@@ -74,6 +74,7 @@ class AtomWindow
 
     hasPathToOpen = not (locationsToOpen.length is 1 and not locationsToOpen[0].pathToOpen?)
     @openLocations(locationsToOpen) if hasPathToOpen and not @isSpecWindow()
+
   # important!
   setLoadSettings: (loadSettingsObj) ->
     # Ignore the windowState when passing loadSettings via URL, since it could
