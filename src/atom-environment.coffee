@@ -50,6 +50,8 @@ PaneElement = require './pane-element'
 TextEditorElement = require './text-editor-element'
 {createGutterView} = require './gutter-component-helpers'
 
+OutputMsg = require './a-outputMsg'
+
 # Essential: Atom global for dealing with packages, themes, menus, and the window.
 #
 # An instance of this class is always available as the `atom` global.
@@ -117,6 +119,12 @@ class AtomEnvironment extends Model
 
   # Call .loadOrCreate instead
   constructor: (params={}) ->
+    # console.log 'atomEnvironment!'
+    # console.log 'getUserInitScriptPath:'
+    # console.log @getUserInitScriptPath()
+    # console.log 'process.env.ATOM_HOME:'
+    # console.log process.env.ATOM_HOME
+
     {@blobStore, @applicationDelegate, @window, @document, configDirPath, @enablePersistence, onlyLoadBaseStyleSheets} = params
 
     @state = {version: @constructor.version}
@@ -756,6 +764,9 @@ class AtomEnvironment extends Model
 
   # Notify the browser project of the window's current project path
   watchProjectPath: ->
+    console.log '@project.getPaths(): '
+    console.log @project.getPaths()
+
     @disposables.add @project.onDidChangePaths =>
       @applicationDelegate.setRepresentedDirectoryPaths(@project.getPaths())
 

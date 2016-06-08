@@ -10,6 +10,16 @@ module.exports = (grunt) ->
     shouldUseCommitHash = if channel in releasableBranches then false else true
     inRepository = fs.existsSync(path.resolve(__dirname, '..', '..', '.git'))
     {version} = require(path.join(grunt.config.get('atom.appDir'), 'package.json'))
+    # path = path.join(grunt.config.get('atom.appDir'), 'package.json')
+
+    grunt.log.writeln '\n' + '******************* set-version-task-getVersion *******************!'
+    grunt.log.writeln 'channel: ' + channel
+    # grunt.log.writeln 'path: ' + path
+    grunt.log.writeln 'version: ' + version
+    grunt.log.writeln 'shouldUseCommitHash: ' + shouldUseCommitHash
+    grunt.log.writeln 'inRepository: ' + inRepository
+    grunt.log.writeln '******************* set-version-task-getVersion *******************!' + '\n'
+
     if shouldUseCommitHash and inRepository
       cmd = 'git'
       args = ['rev-parse', '--short', 'HEAD']
@@ -34,6 +44,10 @@ module.exports = (grunt) ->
       packageJsonPath = path.join(appDir, 'package.json')
       packageJson = require(packageJsonPath)
       packageJson.version = version
+      grunt.log.writeln '\n' + '******************* set-version-task *******************!'
+      grunt.log.writeln 'packageJsonPath: ' + packageJsonPath
+      grunt.log.writeln 'version: ' + version
+      grunt.log.writeln '******************* set-version-task *******************!' + '\n'
       packageJsonString = JSON.stringify(packageJson)
       fs.writeFileSync(packageJsonPath, packageJsonString)
 

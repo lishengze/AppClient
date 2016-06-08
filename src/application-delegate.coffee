@@ -115,6 +115,7 @@ class ApplicationDelegate
   setRepresentedDirectoryPaths: (paths) ->
     loadSettings = getWindowLoadSettings()
     loadSettings['initialPaths'] = paths
+    console.log loadSettings
     setWindowLoadSettings(loadSettings)
 
   setAutoHideWindowMenuBar: (autoHide) ->

@@ -63,10 +63,17 @@ class AtomApplication
     @handleEvents()   # Registers basic application commands, non-idempotent.
     @setupDockMenu()  # mac;
     @storageFolder = new StorageFolder(process.env.ATOM_HOME) #更改过的用户目录;
+    global.outputData 'process.env.ATOM_HOME: ' + process.env.ATOM_HOME
+    # if options.pathsToOpen?.length > 0
+    #   global.outputData options.pathsToOpen?.length
+    # if options.urlsToOpen?.length > 0
+    #   global.outputData options.urlsToOpen?.length
 
     if options.pathsToOpen?.length > 0 or options.urlsToOpen?.length > 0 or options.test
+      global.outputData 'openWithOptions'
       @openWithOptions(options)
     else
+      global.outputData '\n' + '@loadState(options) or @openPath(options)'
       @loadState(options) or @openPath(options)
 
   openWithOptions: ({pathsToOpen, executedFrom, urlsToOpen, test, pidToKillWhenClosed, devMode, safeMode, newWindow, logFile, profileStartup, timeout}) ->
@@ -110,7 +117,7 @@ class AtomApplication
 
   # Configures required javascript environment flags.
   setupJavaScriptArguments: ->
-    app.commandLine.appendSwitch 'js-flags', '--harmony' # 将参数传递到浏览器内核， 对其进行设置;
+    app.commandLine.appendSwitch 'js-flags', '--harmony' # 将参数传递到浏览器内核， 对其进行设置
 
   # Registers basic application commands, non-idempotent.
   handleEvents: ->
@@ -323,6 +330,9 @@ class AtomApplication
   #   :profileStartup - Boolean to control creating a profile of the startup time.
   #   :window - {AtomWindow} to open file paths in.
   openPath: ({pathToOpen, pidToKillWhenClosed, newWindow, devMode, safeMode, profileStartup, window}) ->
+    global.outputData 'openPath!' + '\n'
+    #global.outputData '\n' + 'pathToOpen: ' + pathToOpen.toString()
+    #global.outputData '\n' + 'pidToKillWhenClosed: ' + pidToKillWhenClosed.toString()
     @openPaths({pathsToOpen: [pathToOpen], pidToKillWhenClosed, newWindow, devMode, safeMode, profileStartup, window})
 
   # Public: Opens multiple paths, in existing windows if possible.
@@ -369,7 +379,7 @@ class AtomApplication
 
       windowInitializationScript ?= require.resolve('../initialize-application-window')
       resourcePath ?= @resourcePath
-      openedWindow = new AtomWindow({locationsToOpen, windowInitializationScript, resourcePath, devMode, safeMode, windowDimensions, profileStartup}) #key;
+      openedWindow = new AtomWindow({locationsToOpen, windowInitializationScript, resourcePath, devMode, safeMode, windowDimensions, profileStartup}) #key
 
     if pidToKillWhenClosed?
       @pidsToOpenWindows[pidToKillWhenClosed] = openedWindow
@@ -406,11 +416,14 @@ class AtomApplication
         if loadSettings = window.getLoadSettings()
           states.push(initialPaths: loadSettings.initialPaths)
     if states.length > 0 or allowEmpty
+      global.outputData '\n' + 'states: ' + states
       @storageFolder.store('application.json', states)
 
   loadState: (options) ->
+    global.outputData '\n' + 'loadState!'
     if (states = @storageFolder.load('application.json'))?.length > 0
       for state in states
+        global.outputData '\n' + 'state.initialPaths: ' + state.initialPaths
         @openWithOptions(_.extend(options, {
           pathsToOpen: state.initialPaths
           urlsToOpen: []

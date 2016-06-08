@@ -16,5 +16,8 @@ exports.getWindowLoadSettings = ->
   clone
 
 exports.setWindowLoadSettings = (settings) ->
+  console.log 'windowLoadSettings: '
+  console.log windowLoadSettings
+  console.log location
   windowLoadSettings = settings
   location.hash = encodeURIComponent(JSON.stringify(settings))

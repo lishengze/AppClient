@@ -1,0 +1,64 @@
+
+process.env.ATOM_HOME: C:\Users\li.shengze\.monitor@loadState(options) or @openPath(options)
+loadState!
+state.initialPaths: atom://aboutprocess.env.ATOM_HOME: C:\Users\li.shengze\.monitor
+@loadState(options) or @openPath(options)
+loadState!
+state.initialPaths: atom://aboutprocess.env.ATOM_HOME: C:\Users\li.shengze\.monitor
+@loadState(options) or @openPath(options)
+loadState!
+state.initialPaths: atom://aboutprocess.env.ATOM_HOME: C:\Users\li.shengze\.monitor
+@loadState(options) or @openPath(options)
+loadState!
+state.initialPaths: atom://aboutprocess.env.ATOM_HOME: C:\Users\li.shengze\.monitor
+@loadState(options) or @openPath(options)
+loadState!
+state.initialPaths: atom://about
+states: [object Object]
+states: [object Object]openPath!
+
+states: [object Object]
+states: [object Object],[object Object]
+states: [object Object],[object Object]
+states: [object Object],[object Object]
+states: [object Object],[object Object]
+states: [object Object],[object Object]
+states: [object Object]openPath!
+
+states: [object Object]
+states: [object Object],[object Object]
+states: [object Object],[object Object]
+states: [object Object]
+states: [object Object]
+states: [object Object]
+states: [object Object]
+states: [object Object]process.env.ATOM_HOME: C:\Users\li.shengze\.monitor
+@loadState(options) or @openPath(options)
+loadState!
+state.initialPaths: atom://about
+states: [object Object]
+states: [object Object]
+states: [object Object]process.env.ATOM_HOME: C:\Users\li.shengze\.monitor
+@loadState(options) or @openPath(options)
+loadState!openPath!
+
+states: [object Object]
+states: [object Object]
+states: [object Object]
+states: [object Object]process.env.ATOM_HOME: C:\Users\li.shengze\.monitor
+@loadState(options) or @openPath(options)
+loadState!
+state.initialPaths: atom://about
+states: [object Object]
+states: [object Object]
+@loadState(options) or @openPath(options)process.env.ATOM_HOME: C:\Users\li.shengze\.monitor
+loadState!
+state.initialPaths: atom://about
+states: [object Object]
+states: [object Object]
+states: [object Object]
+states: [object Object]
+states: [object Object]
+states: [object Object]
+states: [object Object]
+states: [object Object]

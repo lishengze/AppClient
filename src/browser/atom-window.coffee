@@ -82,7 +82,7 @@ class AtomWindow
     loadSettings = _.clone(loadSettingsObj)
     delete loadSettings['windowState']
 
-    @browserWindow.loadUrl url.format  # 加载url;https://nodejs.org/docs/latest-v0.12.x/api/url.html;
+    @browserWindow.loadUrl url.format
       protocol: 'file'
       pathname: "#{@resourcePath}/static/index.html"
       slashes: true

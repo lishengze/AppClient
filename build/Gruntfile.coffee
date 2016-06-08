@@ -56,6 +56,11 @@ module.exports = (grunt) ->
   appFileName = packageJson.name
   apmFileName = 'apm'
 
+  version = packageJson.version
+  grunt.log.writeln '\n' + '*******************Gruntfile Version *******************!'
+  grunt.log.writeln version
+  grunt.log.writeln '*******************Gruntfile Version *******************!' + '\n'
+
   if channel is 'beta'
     appName += ' Beta'
     appFileName += '-beta'
@@ -273,7 +278,7 @@ module.exports = (grunt) ->
         loadingGif: path.resolve(__dirname, '..', 'resources', 'win', 'loading.gif')
         iconUrl: path.resolve(__dirname, '..', 'resources', 'app-icons', channel, 'atom.ico')
         setupIcon: path.resolve(__dirname, '..', 'resources', 'app-icons', channel, 'atom.ico')
-        remoteReleases: "http://172.1.128.169:8888/update"
+        # remoteReleases: "http://172.1.128.169:8888/update"
         # remoteReleases: "https://atom.io/api/updates?version=#{metadata.version}"
 
     shell:
@@ -299,7 +304,7 @@ module.exports = (grunt) ->
   # ciTasks.push('set-version', 'check-licenses', 'lint', 'generate-asar')
   ciTasks.push('mkdeb') if process.platform is 'linux'
   # ciTasks.push('codesign:exe') if process.platform is 'win32' and not process.env.CI
-  ciTasks.push('create-windows-installer:installer') if process.platform is 'win32'
+  ciTasks.push('create-windows-installer:installer') if process.platform is 'win32' and channel isnt 'dev'
   ciTasks.push('test') if process.platform is 'darwin'
   # ciTasks.push('codesign:installer') if process.platform is 'win32' and not process.env.CI
   # ciTasks.push('codesign:app') if process.platform is 'darwin' and not process.env.CI
