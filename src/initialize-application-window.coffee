@@ -23,8 +23,8 @@ module.exports = ({blobStore}) ->
     enablePersistence: true
   })
 
-  atom.displayWindow()  # window 全局对象;
-  atom.startEditorWindow() #启动的过程;
+  atom.displayWindow()     # window 全局对象;
+  atom.startEditorWindow() # 启动的过程;
 
   # Workaround for focus getting cleared upon window creation
   windowFocused = ->

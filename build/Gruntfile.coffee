@@ -273,7 +273,7 @@ module.exports = (grunt) ->
         loadingGif: path.resolve(__dirname, '..', 'resources', 'win', 'loading.gif')
         iconUrl: path.resolve(__dirname, '..', 'resources', 'app-icons', channel, 'atom.ico')
         setupIcon: path.resolve(__dirname, '..', 'resources', 'app-icons', channel, 'atom.ico')
-        remoteReleases: "http://172.1.128.169:8888/update"
+        # remoteReleases: "http://172.1.128.169:8888/update"
         # remoteReleases: "https://atom.io/api/updates?version=#{metadata.version}"
 
     shell:

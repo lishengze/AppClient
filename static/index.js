@@ -83,9 +83,9 @@
     setupVmCompatibility()
     setupCsonCache(CompileCache.getCacheDirectory())
 
-    var initialize = require(loadSettings.windowInitializationScript) // ../src/initialize-applicaiton-window.coffee.
+    var initialize = require(loadSettings.windowInitializationScript)// ../src/initialize-applicaiton-window.coffee.
     initialize({blobStore: blobStore})
-    require('ipc').sendChannel('window-command', 'window:loaded')  // 向主进程发送消息，通知窗口加载完成;
+    require('ipc').sendChannel('window-command', 'window:loaded') // 向主进程发送消息，通知窗口加载完成;
   }
 
   function setupCsonCache (cacheDir) {

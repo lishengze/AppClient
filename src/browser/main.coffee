@@ -1,4 +1,4 @@
-global.shellStartTime = Date.now() # 性能检测,启动花的时间;
+global.shellStartTime = Date.now() # 性能检测,启动花的时间
 
 process.on 'uncaughtException', (error={}) ->
   console.log(error.message) if error.message?
@@ -6,7 +6,7 @@ process.on 'uncaughtException', (error={}) ->
 
 
 crashReporter = require 'crash-reporter'  # electron 的模块, 用于向服务器发送信息， api 在electron:
-app = require 'app'                       # electron;
+app = require 'app'                       # electron
 fs = require 'fs-plus'
 path = require 'path'
 yargs = require 'yargs'
@@ -16,7 +16,7 @@ start = ->
   args = parseCommandLine()
   setupAtomHome(args)
   setupCompileCache()
-  return if handleStartupEventWithSquirrel() # 负责自动更新;
+  return if handleStartupEventWithSquirrel() # 负责自动更新
 
   # NB: This prevents Win10 from showing dupe items in the taskbar
   app.setAppUserModelId('com.squirrel.monitor.monitor')
@@ -24,10 +24,10 @@ start = ->
   app.on 'will-finish-launching', setupCrashReporter
 
   app.on 'ready', ->
-    AtomApplication = require path.join(args.resourcePath, 'src', 'browser', 'atom-application')  # 管理所有的功能;
-    AtomApplication.open(args) # atom-application 根据参数执行操作;
+    AtomApplication = require path.join(args.resourcePath, 'src', 'browser', 'atom-application')  # 管理所有的功能
+    AtomApplication.open(args) # atom-application 根据参数执行操作
     console.log 'Test-0.1.2'
-    console.log("App load time: #{Date.now() - global.shellStartTime}ms") unless args.test  #显示启动时间;
+    console.log("App load time: #{Date.now() - global.shellStartTime}ms") unless args.test
 
 normalizeDriveLetterName = (filePath) ->
   if process.platform is 'win32'
@@ -36,13 +36,13 @@ normalizeDriveLetterName = (filePath) ->
     filePath
 
 handleStartupEventWithSquirrel = ->
-  return false unless process.platform is 'win32' # 目前的自动更新只支持win32;
-  SquirrelUpdate = require './squirrel-update'    # 负责自动更新;
+  return false unless process.platform is 'win32' # 目前的自动更新只支持win32
+  SquirrelUpdate = require './squirrel-update'    # 负责自动更新
   squirrelCommand = process.argv[1]
   SquirrelUpdate.handleStartupEvent(app, squirrelCommand)
 
 setupCrashReporter = ->
-  crashReporter.start(productName: '慧眼监控', companyName: 'SFIT', submitUrl: 'tbd') # 启动监听crash的服务;
+  crashReporter.start(productName: '慧眼监控', companyName: 'SFIT', submitUrl: 'tbd')
 
 setupAtomHome = ({setPortable}) ->
   return if process.env.ATOM_HOME
@@ -66,15 +66,14 @@ setupAtomHome = ({setPortable}) ->
   try
     atomHome = fs.realpathSync(atomHome)
 
-  # 进程的用户目录;
+
   process.env.ATOM_HOME = atomHome
 
-# 编译时产生的缓存， 将 coffee编译成 js 的缓存;
 setupCompileCache = ->
   compileCache = require('../compile-cache')
   compileCache.setAtomHomeDirectory(process.env.ATOM_HOME)
 
-#解析命令行like: atom --version;
+
 parseCommandLine = ->
   version = app.getVersion()
   options = yargs(process.argv[1..]).wrap(100) # note1

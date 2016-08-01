@@ -110,7 +110,7 @@ class AtomApplication
 
   # Configures required javascript environment flags.
   setupJavaScriptArguments: ->
-    app.commandLine.appendSwitch 'js-flags', '--harmony' # 将参数传递到浏览器内核， 对其进行设置;
+    app.commandLine.appendSwitch 'js-flags', '--harmony' # 将参数传递到浏览器内核， 对其进行设置
 
   # Registers basic application commands, non-idempotent.
   handleEvents: ->
@@ -369,7 +369,7 @@ class AtomApplication
 
       windowInitializationScript ?= require.resolve('../initialize-application-window')
       resourcePath ?= @resourcePath
-      openedWindow = new AtomWindow({locationsToOpen, windowInitializationScript, resourcePath, devMode, safeMode, windowDimensions, profileStartup}) #key;
+      openedWindow = new AtomWindow({locationsToOpen, windowInitializationScript, resourcePath, devMode, safeMode, windowDimensions, profileStartup}) #key
 
     if pidToKillWhenClosed?
       @pidsToOpenWindows[pidToKillWhenClosed] = openedWindow
