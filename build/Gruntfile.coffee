@@ -36,7 +36,7 @@ module.exports = (grunt) ->
   buildDir ?= path.join(os.tmpdir(), 'monitor-build')
   buildDir = path.resolve(buildDir)
   disableAutoUpdate = grunt.option('no-auto-update') ? false
-
+  # 从环境变量中读取channel;
   channel = grunt.option('channel')
   releasableBranches = ['stable', 'beta']
   if process.env.APPVEYOR and not process.env.APPVEYOR_PULL_REQUEST_NUMBER
@@ -273,7 +273,7 @@ module.exports = (grunt) ->
         loadingGif: path.resolve(__dirname, '..', 'resources', 'win', 'loading.gif')
         iconUrl: path.resolve(__dirname, '..', 'resources', 'app-icons', channel, 'atom.ico')
         setupIcon: path.resolve(__dirname, '..', 'resources', 'app-icons', channel, 'atom.ico')
-        remoteReleases: "http://172.1.128.169:8888/update"
+        # remoteReleases: "http://172.1.128.169:8888/update"
         # remoteReleases: "https://atom.io/api/updates?version=#{metadata.version}"
 
     shell:

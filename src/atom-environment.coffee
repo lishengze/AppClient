@@ -630,7 +630,7 @@ class AtomEnvironment extends Model
 
     @packages.activate()
     @keymaps.loadUserKeymap()
-    @requireUserInitScript() unless @getLoadSettings().safeMode #加载用户自定义的脚本;
+    @requireUserInitScript() unless @getLoadSettings().safeMode #加载用户自定义的脚本
 
     @menu.update()
 

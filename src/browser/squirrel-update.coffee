@@ -17,7 +17,7 @@ else
   regPath  = 'reg.exe'
   setxPath = 'setx.exe'
 
-# Registry keys used for context menu 注册表信息;
+# Registry keys used for context menu 注册表信息
 fileKeyPath        = 'HKCU\\Software\\Classes\\*\\shell\\Atom'
 directoryKeyPath   = 'HKCU\\Software\\Classes\\directory\\shell\\Atom'
 backgroundKeyPath  = 'HKCU\\Software\\Classes\\directory\\background\\shell\\Atom'
@@ -45,7 +45,7 @@ spawn = (command, args, callback) ->
     error?.stdout ?= stdout
     callback?(error, stdout)
 
-# Spawn reg.exe and callback when it completes , 对注册表的操作;
+# Spawn reg.exe and callback when it completes , 对注册表的操作
 spawnReg = (args, callback) ->
   spawn(regPath, args, callback)
 
@@ -58,7 +58,7 @@ spawnSetx = (args, callback) ->
 spawnUpdate = (args, callback) ->
   spawn(updateDotExe, args, callback)
 
-# Install the Open with Atom explorer context menu items via the registry.上下文菜单;
+# Install the Open with Atom explorer context menu items via the registry.上下文菜单
 installContextMenu = (callback) ->
   addToRegistry = (args, callback) ->
     args.unshift('add')
@@ -102,7 +102,7 @@ getPath = (callback) ->
     # Registry query output is in the form:
     #
     # HKEY_CURRENT_USER\Environment
-    #     Path    REG_SZ    C:\a\folder\on\the\path;C\another\folder
+    #     Path    REG_SZ    C:\a\folder\on\the\pathC\another\folder
     #
 
     lines = stdout.split(/[\r\n]+/).filter (line) -> line
@@ -131,7 +131,7 @@ uninstallContextMenu = (callback) ->
 #
 # This is done by adding .cmd shims to the root bin folder in the Atom
 # install directory that point to the newly installed versions inside
-# the versioned app directories. 加载环境变量; resources/win/monitor2;
+# the versioned app directories. 加载环境变量 resources/win/monitor2
 addCommandsToPath = (callback) ->
   installCommands = (callback) ->
     atomCommandPath = path.join(binFolder, 'monitor2.cmd')

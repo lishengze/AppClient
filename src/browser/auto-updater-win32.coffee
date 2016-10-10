@@ -1,6 +1,6 @@
 {EventEmitter} = require 'events'
 _ = require 'underscore-plus'
-SquirrelUpdate = require './squirrel-update'  # 对整个操作系统的操作;
+SquirrelUpdate = require './squirrel-update'  # 对整个操作系统的操作
 
 class AutoUpdater
   _.extend @prototype, EventEmitter.prototype

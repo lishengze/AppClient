@@ -1,4 +1,4 @@
-AtomWindow = require './atom-window' #browser-window的封装;
+AtomWindow = require './atom-window' #browser-window的封装
 ApplicationMenu = require './application-menu'
 AtomProtocolHandler = require './atom-protocol-handler'
 AutoUpdateManager = require './auto-update-manager'# 自动更新由其实现；
@@ -30,9 +30,9 @@ module.exports =
 class AtomApplication
   _.extend @prototype, EventEmitter.prototype
 
-  # Public: The entry point into the Atom application.  # 已改动, options 就是 command line  传进来的参数;
+  # Public: The entry point into the Atom application.  # 已改动, options 就是 command line  传进来的参数
   @open: (options) ->
-    createAtomApplication = -> new AtomApplication(options) #打开新窗口;
+    createAtomApplication = -> new AtomApplication(options) #打开新窗口
     createAtomApplication()
 
   windows: null
@@ -43,7 +43,7 @@ class AtomApplication
   quitting: false
 
   exit: (status) -> app.exit(status)
-  # 自动调用，窗口控制与初始化， 并注册事件;
+  # 自动调用，窗口控制与初始化， 并注册事件
   constructor: (options) ->
     {@resourcePath, @devResourcePath, @version, @devMode, @safeMode, @socketPath, timeout} = options
 
@@ -61,8 +61,8 @@ class AtomApplication
 
     @setupJavaScriptArguments()
     @handleEvents()   # Registers basic application commands, non-idempotent.
-    @setupDockMenu()  # mac;
-    @storageFolder = new StorageFolder(process.env.ATOM_HOME) #更改过的用户目录;
+    @setupDockMenu()  # mac
+    @storageFolder = new StorageFolder(process.env.ATOM_HOME) #更改过的用户目录
 
     if options.pathsToOpen?.length > 0 or options.urlsToOpen?.length > 0 or options.test
       @openWithOptions(options)
@@ -110,7 +110,7 @@ class AtomApplication
 
   # Configures required javascript environment flags.
   setupJavaScriptArguments: ->
-    app.commandLine.appendSwitch 'js-flags', '--harmony' # 将参数传递到浏览器内核， 对其进行设置;
+    app.commandLine.appendSwitch 'js-flags', '--harmony' # 将参数传递到浏览器内核， 对其进行设置
 
   # Registers basic application commands, non-idempotent.
   handleEvents: ->
@@ -156,7 +156,7 @@ class AtomApplication
       @on 'application:minimize', -> @focusedWindow()?.minimize()
       @on 'application:zoom', -> @focusedWindow()?.maximize()
 
-    @openPathOnEvent('application:about', 'atom://about')  #本质是根据参数打开新窗口;
+    @openPathOnEvent('application:about', 'atom://about')  #本质是根据参数打开新窗口
     @openPathOnEvent('application:show-settings', 'atom://config')
     @openPathOnEvent('application:open-your-config', 'atom://.atom/config')
     @openPathOnEvent('application:open-your-init-script', 'atom://.atom/init-script')
@@ -164,7 +164,7 @@ class AtomApplication
     @openPathOnEvent('application:open-your-snippets', 'atom://.atom/snippets')
     @openPathOnEvent('application:open-your-stylesheet', 'atom://.atom/stylesheet')
     @openPathOnEvent('application:open-license', path.join(process.resourcesPath, 'LICENSE.md'))
-    # app 对生命周期的控制;
+    # app 对生命周期的控制
     app.on 'before-quit', =>
       @saveState(false)
       @quitting = true
@@ -212,7 +212,7 @@ class AtomApplication
       win = BrowserWindow.fromWebContents(event.sender)
       win.emit(command, args...)
 
-    ipc.on 'call-window-method', (event, method, args...) -> #ApplicationDelegate 发送消息;
+    ipc.on 'call-window-method', (event, method, args...) -> #ApplicationDelegate 发送消息
       win = BrowserWindow.fromWebContents(event.sender)
       win[method](args...)
 
@@ -369,7 +369,7 @@ class AtomApplication
 
       windowInitializationScript ?= require.resolve('../initialize-application-window')
       resourcePath ?= @resourcePath
-      openedWindow = new AtomWindow({locationsToOpen, windowInitializationScript, resourcePath, devMode, safeMode, windowDimensions, profileStartup}) #key;
+      openedWindow = new AtomWindow({locationsToOpen, windowInitializationScript, resourcePath, devMode, safeMode, windowDimensions, profileStartup}) #key
 
     if pidToKillWhenClosed?
       @pidsToOpenWindows[pidToKillWhenClosed] = openedWindow

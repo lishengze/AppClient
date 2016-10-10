@@ -10,6 +10,7 @@ module.exports = (grunt) ->
     shouldUseCommitHash = if channel in releasableBranches then false else true
     inRepository = fs.existsSync(path.resolve(__dirname, '..', '..', '.git'))
     {version} = require(path.join(grunt.config.get('atom.appDir'), 'package.json'))
+    inRepository = false
     if shouldUseCommitHash and inRepository
       cmd = 'git'
       args = ['rev-parse', '--short', 'HEAD']
