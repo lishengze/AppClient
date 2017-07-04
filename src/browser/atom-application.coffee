@@ -30,7 +30,7 @@ module.exports =
 class AtomApplication
   _.extend @prototype, EventEmitter.prototype
 
-  # Public: The entry point into the Atom application.  # 已改动, options 就是 command line  传进来的参数;
+  # Public: The entry point into the Atom application.  # 已改动, options 就是 command line  传进来的参数
   @open: (options) ->
     createAtomApplication = -> new AtomApplication(options) #打开新窗口;
     createAtomApplication()

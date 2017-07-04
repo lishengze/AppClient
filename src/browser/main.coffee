@@ -12,6 +12,9 @@ path = require 'path'
 yargs = require 'yargs'
 console.log = require 'nslog'
 
+# Addon = require './addon.node'
+# global.Addon = window.Addon
+
 start = ->
   args = parseCommandLine()
   setupAtomHome(args)

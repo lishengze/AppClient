@@ -267,6 +267,7 @@ module.exports = (grunt) ->
 
     'create-windows-installer':
       installer:
+        # grunt.log.write '+++++ Hello Create-installer!-----\n'
         appDirectory: shellAppDir
         outputDirectory: path.join(buildDir, 'installer')
         authors: 'SFIT Inc.'
@@ -299,7 +300,7 @@ module.exports = (grunt) ->
   # ciTasks.push('set-version', 'check-licenses', 'lint', 'generate-asar')
   ciTasks.push('mkdeb') if process.platform is 'linux'
   # ciTasks.push('codesign:exe') if process.platform is 'win32' and not process.env.CI
-  ciTasks.push('create-windows-installer:installer') if process.platform is 'win32'
+  # ciTasks.push('create-windows-installer:installer') if process.platform is 'win32'
   ciTasks.push('test') if process.platform is 'darwin'
   # ciTasks.push('codesign:installer') if process.platform is 'win32' and not process.env.CI
   # ciTasks.push('codesign:app') if process.platform is 'darwin' and not process.env.CI
